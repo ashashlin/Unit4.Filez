@@ -18,3 +18,12 @@ export async function createFile({ name, size, folder_id }) {
 
   return rows[0];
 }
+
+export async function getFiles() {
+  const sql = `
+    SELECT * FROM files
+  `;
+  const { rows } = await db.query(sql);
+
+  return rows;
+}

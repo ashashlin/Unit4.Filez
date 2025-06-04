@@ -14,3 +14,12 @@ export async function createFolder({ name }) {
 
   return rows[0];
 }
+
+export async function getFolders() {
+  const sql = `
+    SELECT * FROM folders
+  `;
+  const { rows } = await db.query(sql);
+
+  return rows;
+}
