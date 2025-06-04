@@ -21,7 +21,12 @@ export async function createFile({ name, size, folder_id }) {
 
 export async function getFiles() {
   const sql = `
-    SELECT * FROM files
+    SELECT
+      files.*,
+      folders.name AS folder_name
+    FROM files
+    JOIN folders
+      ON folder_id = folders.id;
   `;
   const { rows } = await db.query(sql);
 
